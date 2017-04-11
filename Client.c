@@ -1,9 +1,6 @@
 
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #include <stdio.h>
-//#include <sys/socket.h>
-//#include <netinet/in.h>
-//#include <netdb.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <stdint.h>
@@ -14,16 +11,6 @@
 #define BUFLEN 512
 #define PORT 8888
 
-/*
-struct dataPocket
-{
-uint16_t startId;
-uint8_t clientId;
-uint16_t data;
-uint8_t seqNo;
-uint8_t len;
-char payLoad[255];
-};
 
 struct dataPocket buildPocket();*/
 char* BuildCase(int caseNum, int* wholeSize);
@@ -120,7 +107,7 @@ int main(void)
 			}
 			else if (caseNum == 2)
 			{
-				payLoad = "ra is the average of the active user¡¦s ratings, in other words, D¡¦s ratings, which is (5+4+2+3)/4 = 3.5";
+				payLoad = "ra is the average of the active userÂ¡Â¦s ratings, in other words, DÂ¡Â¦s ratings, which is (5+4+2+3)/4 = 3.5";
 			}
 			else if (caseNum == 3)
 			{
@@ -128,7 +115,7 @@ int main(void)
 			}
 			else
 			{
-				payLoad = "To account for users different ratings levels (e.g., some users tend to give higher ratings), base predictions on differences from a user¡¦s average rating";
+				payLoad = "To account for users different ratings levels (e.g., some users tend to give higher ratings), base predictions on differences from a userÂ¡Â¦s average rating";
 			}
 			len = strlen(payLoad) + 1;
 			endID = 0xFFFF;
@@ -259,67 +246,6 @@ int main(void)
 	WSACleanup();
 	return 0;
 }
-/*
-char* BuildCase(int caseNum, int* wholeSize)
-{
-	uint16_t startId;
-	uint8_t clientId;
-	uint16_t type;
-	uint8_t seqNo;
-	char* payLoad = NULL;
-	uint8_t len;
-	uint16_t endID;
-	int payloadlen;
-	int forEndID;
-	char* onePacket;
-
-	if (caseNum == 1 || 2 || 3 || 4)
-	{
-		startId = 0xFFFF;
-		clientId = 0xF0;
-		type = 0xFFF1;
-		seqNo = caseNum;
-		if(caseNum == 1)
-			payLoad = "Hello World";
-		else if(caseNum == 2)
-			payLoad = "ra is the average of the active user¡¦s ratings, in other words, D¡¦s ratings, which is (5+4+2+3)/4 = 3.5";
-		else if (caseNum == 3)
-			payLoad = "Deviation from the average reflect whether she is positive or negative about the item";
-		else
-			payLoad = "To account for users different ratings levels (e.g., some users tend to give higher ratings), base predictions on differences from a user¡¦s average rating";		
-		uint8_t len = strlen(payLoad) + 1;
-		uint16_t endID = 0xFFFF;
-		payloadlen = strlen(payLoad) + 1;
-		forEndID = 7 + strlen(payLoad) + 1;
-		wholeSize = 9 + strlen(payLoad) + 1;
-		
-	}
-	else
-	{
-		startId = 0xFFFF;
-		clientId = 0xF0;
-		type = 0xFFF1;
-		seqNo = 5;
-		payLoad = "Deviation from the average reflect whether she is positive or negative about the item";
-		len = strlen(payLoad) + 1;
-		endID = 0xFFFF;
-		payloadlen = strlen(payLoad) + 1;
-		forEndID = 7 + strlen(payLoad) + 1;
-		wholeSize = 9 + strlen(payLoad) + 1;
-		onePacket = malloc(wholeSize);
-	}
-	
-	onePacket = malloc(wholeSize);
-	memcpy(onePacket, &startId, sizeof(startId));
-	memcpy(onePacket + 2, &clientId, sizeof(clientId));
-	memcpy(onePacket + 3, &type, sizeof(type));
-	memcpy(onePacket + 5, &seqNo, sizeof(seqNo));
-	memcpy(onePacket + 6, &len, sizeof(len));
-	memcpy(onePacket + 7, payLoad, payloadlen);
-	memcpy(onePacket + forEndID, &endID, sizeof(endID));
-	
-}
-*/
 
 
 
