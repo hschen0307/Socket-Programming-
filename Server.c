@@ -1,11 +1,3 @@
-/*
-NAME:        udpServer0
-DESCRIPTION:    The program creates a datagram socket in the inet
-domain, binds it to port 12345 and receives any message
-arrived to the socket and prints it out
-*/
-
-
 #include <stdio.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
