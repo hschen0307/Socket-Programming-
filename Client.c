@@ -209,10 +209,6 @@ int main(void)
 		}
 		else
 		{
-			// socket has something to read
-			//int length = sizeof(remoteAddr);
-
-			//recvfrom(mHandle, buffer, 1024, 0, (SOCKADDR*)&remoteAddr, &length);
 			//receive a reply and print it
 			//clear the buffer by filling null, it might have previously received data
 			memset(buf, '\0', BUFLEN);
